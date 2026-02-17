@@ -1,0 +1,25 @@
+{
+  "name": "Bruin Data Engineering Workspace",
+  "image": "mcr.microsoft.com/devcontainers/python:3.14",
+  "features": {
+    // Installs the uv package manager
+    "ghcr.io/jsburckhardt/devcontainer-features/uv:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // Automatically tells VS Code and Bruin to use the uv virtual environment
+        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+        "python.terminal.activateEnvInSelectedTerminal": true
+      },
+      "extensions": [
+        "bruin-data.bruin-vscode", // Official Bruin Extension
+        "ms-python.python",        // Python Language Support
+        "charliermarsh.ruff",      // Fast Python Linting/Formatting
+        "tamasfe.even-better-toml" // Better editing for pyproject.toml
+      ]
+    }
+  },
+  // Runs after the container starts: syncs Python libs and installs Bruin CLI
+  "postCreateCommand": "uv sync && curl -LsSf https://getbruin.com/install/cli | sh"
+}
