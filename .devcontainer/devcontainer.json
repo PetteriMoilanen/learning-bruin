@@ -21,5 +21,5 @@
     }
   },
   // Runs after the container starts: syncs Python libs and installs Bruin CLI
-  "postCreateCommand": "uv sync && uv tool install bruin-cli"
+  "postCreateCommand": "uv sync && curl -LsSf https://getbruin.com/install/cli | sh"
 }
